@@ -5,3 +5,4 @@ bool cmp(int a,int b){
 }
 sort(nums.begin(),nums.end(),cmp);
 ```
+## stack<> queue<>  push pop
