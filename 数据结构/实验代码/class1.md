@@ -32,6 +32,9 @@ void display(pNode L){
 		return ;
 	}
 	pNode p = L->pNext;
+	if(p->coef<0){
+		cout << "-";
+	}
 	while (p){
 		printf("%.0fx^%d",abs(p->coef),p->exp);
 		if(p->pNext&&p->pNext->coef>0){
