@@ -1,0 +1,100 @@
+```cpp
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 10
+typedef int DataType;
+
+typedef struct SeqList{
+
+   DataType  *elem;
+   int Max; //表示顺序表最大长度
+   int n;//表示顺序表中数据元素的个数
+
+} SeqList;
+
+//创建空顺序表
+void CreateSeqList(SeqList*L1,int n){
+    if(L1!=NULL){
+        L1->elem = (DataType *)malloc(sizeof(DataType) * n);
+        if(L1->elem!=NULL){
+            L1->Max = n;
+            L1->n = 0;
+        }
+        else
+            free(L1);
+    }else{
+        printf("Create failure\n");
+    }
+}
+//尾插法向顺序表插入元素x
+void Insert(SeqList *L1,int x){
+    if(L1->Max<L1->n){
+        printf("Insert failure\n");
+    }else{
+        L1->elem[L1->n] = x;
+        L1->n++;
+    }
+}
+//在下标为p的位置插入元素x
+void InsertPost(SeqList *L1,int p,int x){
+     if(L1->Max<=p){
+        printf("插入位置无效\n");
+    }else if(p<0||p>L1->n){
+        printf("Not exist!\n");
+    }else{
+        int q;
+        for (q = L1->n - 1; q >= p;q--){
+            L1->elem[q + 1] = L1->elem[q];
+        }
+        L1->elem[p] = x;
+        L1->n++;
+    }
+}
+//删除表中下标为p的元素
+void Delete(SeqList *L1,int p){
+    if(L1->Max<=p){
+        printf("删除位置无效\n");
+    }else if(p<0||p>L1->n){
+        printf("Not exist!\n");
+    }
+    else{
+        int q;
+        for (q = p; q < L1->n-1;q++){
+            L1->elem[q] = L1->elem[q + 1];
+        }
+        L1->n--;
+    }
+}
+//打印顺序表元素，并显示顺序表剩余空间的个数
+void Print(SeqList *L1){
+    if(L1->n>0){
+        int i;
+        for (i = 0; i < L1->n;i++){
+            printf("%d ", L1->elem[i]);
+        }
+    }
+    printf("顺序表中剩余的空间个数：%d\n", L1->Max - L1->n);
+}
+
+int main(){
+
+   SeqList *L1 =(SeqList*)malloc(sizeof(SeqList));
+   int n=6; int x ; int i;
+
+   CreateSeqList(L1,MAX); //创建一个最多能存放n个数据元素的空顺序表L1
+
+    //输入6个整数
+   for(i =0 ;i <n ;i++)   {
+     scanf("%d",&x); 
+     Insert(L1 ,x); //向线性表L1中用尾插法插入数据元素x
+   }
+   Print(L1); //打印出顺序表中的内容，并显示顺序表中剩余的空间个数；
+   InsertPost(L1, 2, 0);//在顺序表的第3个位置插入元素值为0
+   Print(L1);
+   InsertPost(L1, 10, 0); //试图在顺序表第11个位置插入元素值为0，程序应提示：插入位置无效；
+   Delete(L1, 1);//删除表中第2个元素
+   Print(L1);
+
+   return 0;
+}
+```

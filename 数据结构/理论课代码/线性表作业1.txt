@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef int DataType;
+
+typedef struct SeqList{
+
+   DataType  *elem;
+
+   int Max; //表示线性表最大长度
+
+   int n;//表示线性表中数据元素的个数
+
+} SeqList;
+
+//创建空顺序表
+void CreateSeqList(SeqList*L1,int n){
+    if(L1!=NULL){
+        L1->elem = (DataType *)malloc(sizeof(DataType) * n);
+        if(L1->elem!=NULL){
+            L1->Max = n;
+            L1->n = 0;
+        }
+        else
+            free(L1);
+    }else{
+        printf("Create failure");
+    }
+}
+void Insert(SeqList *L1,int x){
+    if(L1->Max<L1->n){
+        printf("Insert failure");
+    }else{
+        L1->elem[L1->n] = x;
+        L1->n++;
+    }
+}
+void Print(SeqList *L1){
+    if(L1->n>0){
+        int i;
+        for (i = 0; i < L1->n;i++){
+            printf("%d ", L1->elem[i]);
+        }
+    }
+}
+int Find(SeqList *L1,int x){
+    int i;
+    for (i = 0; i < L1->n;i++){
+        if(L1->elem[i]==x){
+            return i;
+        }
+    }
+    return -1;
+}
+void Replace(SeqList *L1,int x,int t){
+    int i;
+    for (i = 0; i < L1->n;i++){
+        if(L1->elem[i]==x){
+            L1->elem[i] = t;
+        }
+    }
+}
+int main(){
+
+   SeqList *L1 =(SeqList*)malloc(sizeof(SeqList));
+   int n=100; int x ; int i;
+
+   CreateSeqList(L1,n); //创建一个最多能存放n个数据元素的空线性表L1
+
+   for(i =0 ;i <n ;i++)   {
+     scanf("%d",&x); 
+     Insert(L1 ,x); //向线性表L1中插入数据元素x
+   }
+
+   Print(L1); //输出线性表L1中数据元素的值，每行输出5个数据元素
+
+   scanf("%d",&x); 
+
+   int  pos = Find(L1 ,x); 
+   /*在线性表L1中查找值为x的数据元素的下标位置，若未找到，pos=-1，若线性表中有多个相同元素，则返回第一个元素位置*/
+
+   //printf("Pos:%d\n", pos);
+
+   Replace(L1 , x , 999); //将线性表L1中值为x的数据元素替换为999
+
+   Print(L1);
+
+   return 0;
+}

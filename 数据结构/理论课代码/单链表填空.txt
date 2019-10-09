@@ -1,0 +1,22 @@
+数据类型定义如下 :
+
+  struct node 
+
+  { int data ;
+
+struct node *next ;    };
+  下面函数的功能是：在结点p的后面插入数据元素x.在（1）—（3）填入适当的语句。
+
+void Insert(int x, struct node *p)    {
+
+   struct node *q; //q结点要用于放数据元素x，必须有存储空间
+   ____ （1）______ ;
+   _____ （2） ___= x;
+   q->next = p->next ;
+   ___ （3） __; 
+}
+
+(1)if(q==NULL){printf("out of space.\n");}
+(2)q->data 
+(3)p->next = q
+
