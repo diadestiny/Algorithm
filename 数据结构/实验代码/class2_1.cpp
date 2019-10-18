@@ -1,4 +1,3 @@
-```cpp
 #include <iostream>
 #include <stack>
 using namespace std;
@@ -64,4 +63,3 @@ int main(){
     dfs();
     return 0;
 }
-```

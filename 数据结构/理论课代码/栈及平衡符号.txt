@@ -1,0 +1,121 @@
+#include <iostream>
+using namespace std;
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+typedef char DataType;
+ 
+//采用链式栈 
+struct node{
+ DataType data;  //数据元素 
+ struct node *next; //指向下一个数据元素的指针 
+ };
+
+typedef struct node *PtrToNode;
+typedef PtrToNode Stack;
+
+//初始化一个空栈 
+Stack createNullStack(void)
+{ 
+	PtrToNode head = new struct node;
+	head->next = NULL;
+	return head;
+}
+
+//入栈函数，参数：入栈数据元素，栈头指针
+void push(DataType x , Stack s)
+{
+	//请在此处填写代码，实现入栈操作 
+	/********** Begin **********/
+ 	 Stack temp = new struct node;
+	 temp->data=x;
+ 	 temp->next=s->next;
+	 s->next=temp;
+	/********** End **********/
+ } 
+ 
+//判定栈是否为空，若栈为空，则返回1，否则返回0 
+int isEmpty(Stack s)
+{
+ 	//请在此处填写代码，实现判定栈是否为空操作，若栈为空，则返回1，否则返回0
+	/********** Begin **********/
+ 	if(s->next==NULL){
+		 return 1;
+	 }else{
+		 return 0;
+	 }
+ 	 
+	/********** End **********/
+ }
+ 
+ //出栈，并返回栈顶元素 
+ DataType pop(Stack s)
+ {
+ 	if(isEmpty(s) == 0) 
+ 	{
+ 		DataType x = s->next->data;
+ 		PtrToNode p = s->next ;
+ 		s->next = p->next ;
+ 		delete p ;
+ 		return x ;
+ 	}
+ 	else
+ 	  return 0;
+ }
+DataType top(Stack s){
+	return s->next->data;
+}
+ 
+ void balance( char str[])
+ {
+ 	//请在此处填写代码，实现平衡符号的判定
+    /********** Begin **********/
+	Stack s =createNullStack();
+ 	for(int i=0;i<strlen(str);i++){
+		 if(str[i]>='1'&&str[i]<='9') continue;
+		 else {
+			 if(str[i]=='('||str[i]=='['||str[i]=='['){
+				push(str[i],s);
+			 }else if(str[i]==')'){
+				 	if(!isEmpty(s)){
+						 if(top(s)=='('){
+							 pop(s);
+						 }
+						 
+					 }
+			 }
+			 else if(str[i]==']'){
+					if(!isEmpty(s)){
+						 if(top(s)=='['){
+							 pop(s);
+						 }
+						 
+					 }
+			 }
+			 else if(str[i]=='}'){
+				 	if(!isEmpty(s)){
+						 if(top(s)=='{'){
+							 pop(s);
+						 }
+					 }
+			 }
+		 }
+	 }
+	 if(isEmpty(s)){
+		 cout<<"匹配";
+	 }else{
+		 cout<<"不匹配";
+	 }
+ 	 
+	/********** End **********/
+ }
+ 
+ int main()
+ {
+ 	char str[90] ;
+ 	cin>>str ;
+    balance(str);
+
+ }
+ 
