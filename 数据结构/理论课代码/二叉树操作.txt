@@ -1,0 +1,49 @@
+typedef char DataType;
+
+struct node
+{
+    DataType info;
+    struct node *lchild, *rchild;
+};
+
+int countHeight(struct node *tree)
+{
+    if (tree == NULL)
+    {
+        return -1;
+    }
+    else
+    {
+        int left, rigth;
+        right = 1 + countHeight(T->rchild);
+        left = 1 + countHeight(T->lchild);
+        return right > left ? right : left;
+    }
+}
+
+int countLeaf(struct node *tree)
+{
+
+    if (tree == NULL){
+        return 0;
+    } 
+    else if (tree->lchild == NULL && tree->rchild == NULL){
+        return 1;
+    }
+    else
+    {
+        int left = countLeaf(tree->lchild);
+        int rigth = countLeaf(tree->rchild);
+        return left + right;
+    }
+}
+void changeLR(BiTree root)
+{
+	if (root) {
+		BiTree temp = root->lchild;
+		root->lchild = root->rchild;
+		root->rchild = temp;
+		changeLR(root->lchild);
+		changeLR(root->rchild);
+	}
+}
