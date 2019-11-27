@@ -1,0 +1,54 @@
+冒泡:
+void sort_array(int *arr, int n)
+//  编程实现《冒泡排序算法》：将乱序序列arr转化为升序序列
+//  函数参数：乱序整数数组arr 数组长度
+//  要求输出：调用print_array(int *arr, int n)输出前三次冒泡操作后的序列，以及最终的升序序列
+{
+    // 请在这里补充代码，完成本关任务
+    /********** Begin *********/
+    for(int i=0;i<n-1;i++){
+		for(int j=0;j<n-i-1;j++){
+			if(arr[j]>arr[j+1]){
+				int temp=arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=temp;
+			}
+		}
+		if(i<=2){
+		print_array(arr,n);
+		}
+	}
+	print_array(arr,n);
+    
+    /********** End **********/
+}
+选择:
+void sort_array(int *a, int n)
+//  编程实现《选择排序算法》：将乱序序列arr转化为升序序列
+//  函数参数：乱序整数数组（无重复元素） 数组长度
+//  要求输出：调用print_array(int *arr, int n)输出前三次选择操作后的序列，以及最终的升序序列
+{
+    // 请在这里补充代码，完成本关任务
+    /********** Begin *********/
+    for(int i=0;i<n;i++){
+		int temp=a[i];
+		int flag;
+		for(int j=i;j<n;j++){
+			if(a[j]<temp){
+				temp=a[j];
+				flag=j;
+			}
+		}
+		if(temp!=a[i]){
+			a[flag]=a[i];
+			a[i]=temp;
+		}
+		if(i<3){
+			print_array(a,n);
+		}
+	}
+		print_array(a,n);
+    
+    /********** End **********/
+}
+
