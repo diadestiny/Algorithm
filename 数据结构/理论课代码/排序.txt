@@ -51,6 +51,7 @@ void sort_array(int *a, int n)
     
     /********** End **********/
 }
+<<<<<<< HEAD
 插入:
 void sort_array(int *arr, int n)
 //  编程实现《插入排序算法》：将乱序序列arr转化为升序序列
@@ -355,3 +356,6 @@ void sort_array(int *arr, int n)
     print_array(arr, n);
     /********** End **********/
 }
+=======
+
+>>>>>>> dcc8936069233363b0115b8171d82f38237eb487
