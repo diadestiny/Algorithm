@@ -6,9 +6,11 @@ bool cmp(int a,int b){
 sort(nums.begin(),nums.end(),cmp);
 sort(nums.begin(),nums.end(),greater<int>());//从大到小
 ```
-## stack<> queue<>  
+## stack<> 
 push() pop() top() empty() size()
 
+## queue<> 
+push() pop() front() empty() size()
 ## vector
 * vector<int> vec(n,0) //n个0 
 * vec.push_back()
