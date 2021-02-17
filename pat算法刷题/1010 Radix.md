@@ -117,3 +117,61 @@ int main(){
 
 
 
+* 秦九韶算法(任意进制字符串转十进制数)+二分查找
+
+  ```cpp
+  #include<iostream>
+  #include<algorithm>
+  
+  using namespace std;
+  
+  typedef long long LL ;
+  
+  int get(char c)
+  {
+      if (c <= '9') return c - '0';  // 刚开始写成了 9，应该写'9'
+      else return c - 'a' + 10;
+  }
+  
+  LL cal(string n, LL r)
+  {
+      LL res = 0;
+      for (auto c : n)
+      {
+          if ((double)res * r + get(c) > 1e16) return 1e18;
+          res = res * r + get(c);
+      }
+      return res;
+  }
+  
+  int main()
+  {
+      string s1, s2;
+      int tag, radix;
+  
+      cin >> s1 >> s2 >> tag >> radix;
+      if (tag == 2) swap(s1, s2);
+  
+      // 转成十进制的target
+      LL target = cal(s1, radix);
+  
+  
+  
+      LL l = 0, r = target + 1;  //  + 1
+      for (auto c : s2) l = max(l, (LL)get(c) + 1);
+  
+      while(l < r)
+      {
+          LL mid = l + r >> 1;
+          if (cal(s2, mid) >= target) r = mid;
+          else l = mid + 1;
+      }
+  
+      if (cal(s2, r) != target) puts("Impossible");
+      else cout << r << endl;
+      return 0;
+  }
+  
+  ```
+
+  
