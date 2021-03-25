@@ -1,4 +1,4 @@
-## sort自定义排序
+## * sort自定义排序
 ```cpp
 bool cmp(int a,int b){
     return a<b;
@@ -6,12 +6,21 @@ bool cmp(int a,int b){
 sort(nums.begin(),nums.end(),cmp);
 sort(nums.begin(),nums.end(),greater<int>());//从大到小
 ```
-## stack<> 
+
+
+### * reverse(nums.begin(),nums.end());
+
+### *string 常用substr(起初下标id,len);
+
+
+
+## * stack<> 
+
 push() pop() top() empty() size()
 
-## queue<> 
+## * queue<> 
 push() pop() front() empty() size()
-## vector
+## * vector
 * vector<int> vec(n,0) //n个0 
 * vec.push_back()
 * vec.pop_back()
@@ -23,7 +32,7 @@ vector<int> v[10005];
 v[x].push_back(y);
 ```
 
-## set
+## * set
 * set<string> s;
 * s.insert("fool");//O(logn)
 * s.erase("fool"); //O(logn)
@@ -61,6 +70,19 @@ struct Node{
 > map<int,set<string>> class;
 > map<string,int> 可以保存一类书对应的本数
 
+
+
+### * unordered_map<string,int> hash
+
+* hash["str"] = 2;
+
+* hash.count("str")
+
+* hash.size()
+
+  
+
 ### **string str cin cout数据10^6超时
 1. 用char str[10] scanf("%s",str);;
 2. 改用scanf("%s",str.c_str()); printf("%s",(it->first).c_str());
+
