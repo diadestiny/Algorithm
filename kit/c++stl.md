@@ -61,6 +61,7 @@ struct Node{
 ## map
 * map<string,int> dict;
 * dict.insert(make_pair("dia",666));
+* dict["dia"] = 666;
 * dict.count("dia");
 * dict.size();
 * dict.clear();
@@ -80,7 +81,6 @@ struct Node{
 
 * hash.size()
 
-  
 
 ### **string str cin cout数据10^6超时
 1. 用char str[10] scanf("%s",str);;
